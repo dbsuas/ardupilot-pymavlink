@@ -1,5 +1,6 @@
 import math
 from pymavlink import mavutil
+from functions.math_func import *
 
 connection = None
 
@@ -11,49 +12,6 @@ def init_conn(conn):
     global connection
     connection = conn
 
-def distance_between(lat1, lon1, lat2, lon2):
-    R = 6371000.0  # Средний радиус Земли, м
-
-    # Перевод координат в радианы
-    lat1, lon1, lat2, lon2 = map(math.radians, (lat1, lon1, lat2, lon2))
-
-    dlat = lat2 - lat1
-    dlon = lon2 - lon1
-
-    # Формула гаверсинусов
-    a = (math.sin(dlat / 2) ** 2
-        + math.cos(lat1) * math.cos(lat2)
-        * math.sin(dlon / 2) ** 2)
-
-    # Защита от погрешностей округления
-    a = max(0.0, min(1.0, a))
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-
-    return R * c
-
-def shift_coordinates(lat, lon, azimuth, distance):
-    R = 6371000.0  # Средний радиус Земли, м
-
-    lat1 = math.radians(lat)
-    lon1 = math.radians(lon)
-    az = math.radians(azimuth)
-
-    # Угловое расстояние
-    delta = distance / R
-    # Новая широта
-    lat2 = math.asin(
-        math.sin(lat1) * math.cos(delta)
-        + math.cos(lat1) * math.sin(delta) * math.cos(az))
-    # Новая долгота
-    lon2 = lon1 + math.atan2(
-        math.sin(az) * math.sin(delta) * math.cos(lat1),
-        math.cos(delta) - math.sin(lat1) * math.sin(lat2))
-    # Возвращаем градусы
-    new_lat = math.degrees(lat2)
-    new_lon = (math.degrees(lon2) + 540) % 360 - 180
-
-    return new_lat, new_lon
-
 def guided():
     connection.set_mode (connection.mode_mapping()['GUIDED'])  # set the flight mode to GUIDED
     while True:
@@ -61,6 +19,14 @@ def guided():
         if message and message.custom_mode == connection.mode_mapping()['GUIDED']:
             print("GUIDED mode enabled")
             break
+def land():
+    connection.set_mode (connection.mode_mapping()['LAND'])  # set the flight mode to GUIDED
+    while True:
+        message = connection.recv_match(type='HEARTBEAT', blocking=True, timeout=2)
+        if message and message.custom_mode == connection.mode_mapping()['LAND']:
+            print("land mode enabled")
+            break
+
 
 def arm():
     connection.arducopter_arm()

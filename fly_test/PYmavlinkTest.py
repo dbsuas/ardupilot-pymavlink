@@ -1,6 +1,5 @@
 from pymavlink import mavutil  
-from func import *
-import math
+from functions.func import *
 from time import sleep
 
 def take_picture(): # You can write picture taking logic here
@@ -46,7 +45,7 @@ arm()
 takeoff(10) # altitude
 # go_to(90, 5, 10) # azimuth, distance, altitude
 snake(90, 20, 20, 5, 15) #azimuth, length, width, step, altitude
-
+land()
 connection.close()  
 
 
