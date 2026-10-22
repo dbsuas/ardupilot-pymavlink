@@ -20,7 +20,7 @@ def guided():
             print("GUIDED mode enabled")
             break
 def land():
-    connection.set_mode (connection.mode_mapping()['LAND'])  # set the flight mode to GUIDED
+    connection.set_mode (connection.mode_mapping()['LAND'])  # set the flight mode to LAND
     while True:
         message = connection.recv_match(type='HEARTBEAT', blocking=True, timeout=2)
         if message and message.custom_mode == connection.mode_mapping()['LAND']:
