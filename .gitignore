@@ -16,3 +16,6 @@ __pycache__/
 # ArduPilot logs
 *.tlog
 *.bin
+
+# VS Code local configuration
+.vscode/
