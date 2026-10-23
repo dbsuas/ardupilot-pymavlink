@@ -1,6 +1,6 @@
 # Drone Flight Test
 
-A Python project for testing drone flight control, coordinate calculations, and automated area photography.
+A Python project for testing drone flight control, and automated area photography.
 
 ## Project Structure
 
@@ -33,10 +33,10 @@ Contains scripts for experimental and test flights.
 ## Current Tasks
 
 - [ ] **Implement precomputed lawnmower flight paths.** Calculate all waypoints before takeoff to minimize cumulative GPS coordinate errors during flight.
-- [ ] **Add altitude support to coordinate transformations.** Extend coordinate calculation functions to account for absolute altitude.
 - [ ] **Introduce a local coordinate system.** Replace the current azimuth-and-distance navigation model with a custom coordinate system for easier waypoint planning and path generation.
 - [ ] **Maintain camera orientation during lawnmower flights.** Keep the drone's heading consistent throughout the flight pattern to avoid unwanted changes in camera orientation.
-- [ ] **Implement multiple area definition and photography methods.** Support different ways of specifying the area to be surveyed and different strategies for capturing images.
+- [ ] **Implement camera support in Gazebo** Integrate the simulated camera stream into the Python code to enable experiments with aerial mapping.
+- [ ] **Develop a 2D mapping script** Create a Python script to process captured images and generate a 2D map.
 
 ## Development Goals
 
