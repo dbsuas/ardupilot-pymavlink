@@ -58,11 +58,6 @@ Functions for area coverage planning and automated aerial photography, including
 - `snake(azimuth, length, width, step, altitude)` — the legacy, less accurate implementation of the lawnmower flight pattern.
 - `snake_mod(azimuth, length, width, step, altitude)` — the updated lawnmower flight pattern implementation using the local ENU coordinate system.
 
-- **`math_func.py`** — Functions for geographic coordinate calculations and transformations, including calculating new coordinates based on direction and distance.
-- **`func.py`** — Drone control functions, including arming and disarming, flight mode selection, takeoff, and navigation to a target point.
-- **`camera.py`** — Reserved for future implementation of camera control and interaction.
-- **`track.py`** — Functions for area coverage and automated photography, including flight patterns for surveying a specified area.
-
 ## Current Tasks
 
 - [+] **Implement precomputed lawnmower flight paths.** Calculate all waypoints before takeoff to minimize cumulative GPS coordinate errors during flight.
