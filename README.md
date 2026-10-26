@@ -45,6 +45,7 @@ Drone control functions, including connection initialization, flight mode select
 - `set_home()` — sets the home position used for return-to-home operations.
 - `set_enu_home()` — initializes the origin of the local ENU coordinate system.
 - `go_home()` — returns the drone to the configured home position.
+- `yaw_azimuth(azimuth)` — rotates the drone in yaw to a specified azimuth.
 
 #### `camera.py`
 Functions for camera control and interaction. Implementations will be added in the future.
@@ -62,7 +63,7 @@ Functions for area coverage planning and automated aerial photography, including
 
 - [+] **Implement precomputed lawnmower flight paths.** Calculate all waypoints before takeoff to minimize cumulative GPS coordinate errors during flight.
 - [+] **Introduce a local coordinate system.** Replace the current azimuth-and-distance navigation model with a custom coordinate system for easier waypoint planning and path generation.
-- [ ] **Maintain camera orientation during lawnmower flights.** Keep the drone's heading consistent throughout the flight pattern to avoid unwanted changes in camera orientation.
+- [+] **Maintain camera orientation during lawnmower flights.** Keep the drone's heading consistent throughout the flight pattern to avoid unwanted changes in camera orientation.
 - [ ] **Implement camera support in Gazebo.** Integrate the simulated camera stream into the Python code to enable experiments with aerial mapping.
 - [ ] **Develop a 2D mapping script.** Create a Python script to process captured images and generate a 2D map.
 ## Development Goals

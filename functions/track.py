@@ -22,6 +22,7 @@ def snake(azimuth, length, width, step, altitude):
 def snake_mod(azimuth, length, width, step, altitude):
     set_home()
     set_enu_home()
+    yaw_azimuth(azimuth)
     E = 0
     N = 0 
     take_picture()
@@ -35,12 +36,13 @@ def snake_mod(azimuth, length, width, step, altitude):
                 az = az + 180
             E = E + step * math.sin(math.radians(az))
             N = N + step * math.cos(math.radians(az))
-            go_to_enu(E, N, altitude)
+            go_to_enu(E, N, altitude, azimuth)
             take_picture()
             process_picture()
         E = E + step * math.sin(math.radians(azimuth+90))
         N = N + step * math.cos(math.radians(azimuth+90))
-        go_to_enu(E, N, altitude)
+        if(i != b-1):
+            go_to_enu(E, N, altitude, azimuth)
         take_picture()
         process_picture()
     go_home()
