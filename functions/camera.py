@@ -91,5 +91,5 @@ def take_picture():  # Receive and save one camera frame
     return picture_path  # Return the path for later processing
 
 def process_picture():
-    sleep(2)
+    sleep(1)
     print("Picture processed")

@@ -1,6 +1,7 @@
 import math
+import functions.func as fun
 
-R = 6371000.0 # Earth radius
+R = 6378137.0 #Earth radius
 
 def distance_between(lat1, lon1, lat2, lon2):
     lat1, lon1, lat2, lon2 = map(math.radians, (lat1, lon1, lat2, lon2))
@@ -33,3 +34,26 @@ def shift_coordinates(lat, lon, azimuth, distance):
     new_lon = (math.degrees(lon2) + 540) % 360 - 180
 
     return new_lat, new_lon
+
+def enu_to_geo(E, N):
+    phi = math.radians(fun.enu_home_lat)
+    omega = math.radians(fun.enu_home_lon)
+
+    a = R * math.cos(phi) * math.cos(omega) - E * math.sin(omega) - N * math.sin(phi) * math.cos(omega)
+    b = R * math.cos(phi) * math.sin(omega) + E * math.cos(omega) - N * math.sin(phi) * math.sin(omega)
+    c = R * math.sin(phi) + N * math.cos(phi)
+
+    k = 2.0 * (math.cos(phi)*(a * math.cos(omega) + b * math.sin(omega)) + c * math.sin(phi))
+    m = a*a + b*b + c*c - R*R
+
+    t = 0.5 * (math.sqrt(k*k - 4.0 * m) - k)
+
+    x = t * math.cos(phi) * math.cos(omega) + a
+    y = t * math.cos(phi) * math.sin(omega) + b
+    z = t * math.sin(phi) + c
+    
+    lat = math.asin(z/R)
+    lon = math.atan2(y, x)
+
+    return math.degrees(lat), math.degrees(lon)
+

@@ -1,6 +1,6 @@
 from pymavlink import mavutil  
 from functions.func import *
-from functions.track import snake
+from functions.track import *
 
 connection = mavutil.mavlink_connection(
     "udpin:127.0.0.1:14550",  # listening on UDP port 14550
@@ -20,8 +20,8 @@ print("Flight mode:", connection.flightmode)
 init_conn(connection) 
 guided()
 arm()
-takeoff(10) 
-snake(90, 20, 20, 5, 15) #azimuth, length, width, step, altitude
+takeoff(10)
+snake_mod(90, 20, 20, 5, 15) #azimuth, length, width, step, altitude
 land()
 connection.close()  
 
