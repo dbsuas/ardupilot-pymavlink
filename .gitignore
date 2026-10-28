@@ -19,3 +19,6 @@ __pycache__/
 
 # VS Code local configuration
 .vscode/
+
+# Captured camera images
+captures/
