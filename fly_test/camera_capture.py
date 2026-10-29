@@ -28,7 +28,7 @@ arm()
 takeoff(50) # altitude
 sleep(5) # wait for the drone to stabilize
 for i in range(4): # fly in a square pattern
-    take_picture() # take a picture
+    take_geotagged_picture(connection) # take a picture
     go_to(azimuth, 25, 50)
     sleep(5) # go forward 5 meters
     azimuth += 90 # turn 90 degrees

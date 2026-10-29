@@ -64,7 +64,8 @@ Functions for area coverage planning and automated aerial photography, including
 - [+] **Implement precomputed lawnmower flight paths.** Calculate all waypoints before takeoff to minimize cumulative GPS coordinate errors during flight.
 - [+] **Introduce a local coordinate system.** Replace the current azimuth-and-distance navigation model with a custom coordinate system for easier waypoint planning and path generation.
 - [+] **Maintain camera orientation during lawnmower flights.** Keep the drone's heading consistent throughout the flight pattern to avoid unwanted changes in camera orientation.
-- [ ] **Implement camera support in Gazebo.** Integrate the simulated camera stream into the Python code to enable experiments with aerial mapping.
+- [+] **Implement camera support in Gazebo.** Integrate the simulated camera stream into the Python code to enable experiments with aerial mapping.
+- [ ] **Add geotagging** Retrieve the geographic coordinates of each captured image for use in the mapping process.
 - [ ] **Develop a 2D mapping script.** Create a Python script to process captured images and generate a 2D map.
 ## Development Goals
 

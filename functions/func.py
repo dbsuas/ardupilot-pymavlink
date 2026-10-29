@@ -141,6 +141,7 @@ def go_home():
             sleep(stab_delay)
             print("Home position reached!")
             break
+
 def yaw_azimuth(azimuth):
     message = connection.recv_match(type='GLOBAL_POSITION_INT', blocking=True)
 
